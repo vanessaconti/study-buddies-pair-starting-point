@@ -1,4 +1,4 @@
-\c study_buddies_api 
+-- \c study_buddies_api 
 
 INSERT INTO groups (name, main_focus, contact_email) VALUES 
 ('JavaScript', 'JavaScript', 'js@js.io'),
