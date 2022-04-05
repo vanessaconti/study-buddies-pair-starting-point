@@ -6,7 +6,6 @@ const {
   getAllGroups,
   getGroup,
   createGroup,
-  deleteGroup,
   updateGroup,
 } = require("../queries/groups.js");
 

@@ -30,18 +30,6 @@ const createGroup = async (group) => {
   }
 };
 
-const deleteGroup = async (id) => {
-  try {
-    const deletedGroup = await db.one(
-      "DELETE FROM groups WHERE id = $1 RETURNING *",
-      id
-    );
-    return deletedGroup;
-  } catch (error) {
-    return error;
-  }
-};
-
 const updateGroup = async (id, group) => {
   try {
     const updatedGroup = await db.one(
@@ -58,6 +46,5 @@ module.exports = {
   getAllGroups,
   getGroup,
   createGroup,
-  deleteGroup,
   updateGroup,
 };
