@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
 
 const groupsController = require("./controllers/groupsController.js");
 app.use("/groups", groupsController);
+
 const eventsController = require("./controllers/eventsController.js");
 app.use("/events", eventsController);
 

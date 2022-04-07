@@ -38,7 +38,7 @@ const updateGroup = async (id, group) => {
     );
     return updatedGroup;
   } catch (error) {
-    return err;
+    return error;
   }
 };
 

@@ -32,6 +32,7 @@ CREATE TABLE events (
     virtual_meeting_link TEXT,
     start_time TIMESTAMP WITH TIME ZONE,
     end_time TIMESTAMP WITH TIME ZONE,
+    number_of_attendees INTEGER DEFAULT 0,
      study_group_id INTEGER REFERENCES groups(id)
     ON DELETE CASCADE
 );
