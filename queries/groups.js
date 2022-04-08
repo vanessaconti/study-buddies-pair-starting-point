@@ -10,7 +10,6 @@ const getAllGroups = async () => {
 };
 
 const getAllGroupsByActiveStatus = async (activeStatus) => {
-  console.log(activeStatus);
   try {
     const allGroups = await db.any("SELECT * FROM groups WHERE active=$1", [
       activeStatus,

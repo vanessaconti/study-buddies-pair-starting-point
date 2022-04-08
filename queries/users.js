@@ -63,10 +63,8 @@ const updateUser = async (id, user) => {
         id,
       ]
     );
-    console.log(id, updatedUser);
     return updatedUser;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

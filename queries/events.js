@@ -15,10 +15,8 @@ const getAllEvents = async (id) => {
     WHERE groups.id=$1`,
       [id]
     );
-    console.log(allEvents);
     return allEvents;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
@@ -50,7 +48,6 @@ const createEvent = async (group_id, event) => {
     );
     return newEvent;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
@@ -82,7 +79,6 @@ const updateEvent = async (id, event) => {
     );
     return updatedEvent;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

@@ -2,12 +2,8 @@ const express = require("express");
 
 const events = express.Router();
 
-const {
-  getAllEvents,
-  getEvent,
-  createEvent,
-  updateEvent,
-} = require("../queries/events.js");
+const { getEvent, createEvent, updateEvent } = require("../queries/events.js");
+const { humanReadableDateTime } = require("../date-helper.js");
 
 // Create
 events.post("/", async (req, res) => {
@@ -31,6 +27,8 @@ events.post("/", async (req, res) => {
 events.get("/:id", async (req, res) => {
   try {
     const oneEvent = await getEvent(req.params.id);
+    // oneEvent.start_time = humanReadableDateTime(oneEvent.start_time);
+    // oneEvent.end_time = humanReadableDateTime(oneEvent.end_time);
     res.status(200).json(oneEvent);
   } catch (error) {
     res.status(500).json({ error: error });
