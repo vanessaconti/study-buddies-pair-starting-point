@@ -8,21 +8,6 @@ const {
   createEvent,
   updateEvent,
 } = require("../queries/events.js");
-// Index
-events.get("/", async (req, res) => {
-  const allEvents = await getAllEvents();
-
-  try {
-    if (allEvents[0]) {
-      res.status(200).json(allEvents);
-    } else {
-      res.status(500).json({ error: 'Must have a group id to see events associated with a group' });
-    }
-  } catch(error){
-    res.status(500).json({ error: error });
-  }
-
-});
 
 // Create
 events.post("/", async (req, res) => {

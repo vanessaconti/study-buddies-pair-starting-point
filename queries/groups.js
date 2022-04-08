@@ -9,10 +9,35 @@ const getAllGroups = async () => {
   }
 };
 
+const getAllGroupsByActiveStatus = async (activeStatus) => {
+  console.log(activeStatus);
+  try {
+    const allGroups = await db.any("SELECT * FROM groups WHERE active=$1", [
+      activeStatus,
+    ]);
+    return allGroups;
+  } catch (error) {
+    return error;
+  }
+};
+
 const getGroup = async (id) => {
   try {
     const oneGroup = await db.one("SELECT * FROM groups WHERE id=$1", id);
     return oneGroup;
+  } catch (error) {
+    return error;
+  }
+};
+
+const getGroupByFocus = async (searchParams) => {
+  try {
+    const foundGroups = await db.any(
+      "SELECT * FROM groups WHERE main_focus ILIKE '%$1:value%' ",
+      [searchParams]
+    );
+
+    return foundGroups;
   } catch (error) {
     return error;
   }
@@ -47,4 +72,6 @@ module.exports = {
   getGroup,
   createGroup,
   updateGroup,
+  getGroupByFocus,
+  getAllGroupsByActiveStatus,
 };

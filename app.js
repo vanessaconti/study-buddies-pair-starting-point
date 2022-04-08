@@ -18,5 +18,8 @@ app.use("/groups", groupsController);
 const eventsController = require("./controllers/eventsController.js");
 app.use("/events", eventsController);
 
+const usersController = require("./controllers/usersController.js");
+app.use("/users", usersController);
+
 // EXPORT
 module.exports = app;

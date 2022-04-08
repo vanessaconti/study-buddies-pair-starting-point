@@ -11,7 +11,8 @@ CREATE TABLE groups (
     name TEXT NOT NULL UNIQUE, 
     main_focus TEXT,
     date_formed DATE NOT NULL DEFAULT CURRENT_DATE,
-    contact_email TEXT
+    contact_email TEXT,
+    active BOOLEAN DEFAULT TRUE
 );
 
 DROP TABLE IF EXISTS events;
@@ -41,15 +42,9 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY, 
-    username TEXT UNIQUE, 
-    admin BOOLEAN DEFAULT false,
-    verified BOOLEAN DEFAULT false
-);
-
-DROP TABLE IF EXISTS users_events;
-
-CREATE TABLE users_events (
-    created TIMESTAMP WITH TIME ZONE,
-    bookmark_id INTEGER,
-    user_id INTEGER
+    username TEXT UNIQUE NOT NULL, 
+    first_name TEXT,
+    last_name TEXT,
+    password TEXT,
+    email TEXT
 );
