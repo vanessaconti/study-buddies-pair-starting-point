@@ -2,7 +2,8 @@ const db = require("../db/dbConfig.js");
 
 const getAllEvents = async (id) => {
   try {
-    const allEvents = await db.any(`
+    const allEvents = await db.any(
+      `
     SELECT
      * 
     FROM
@@ -11,9 +12,16 @@ const getAllEvents = async (id) => {
      events
     ON
      events.study_group_id = groups.id
-    WHERE groups.id=$1`, [id]);
-    console.log(allEvents)
-    return allEvents;
+    WHERE groups.id=$1`,
+      [id]
+    );
+    // console.log(allEvents)
+
+    //past and upcoming events
+    const past_events = allEvents.filter((event) => isPast(event));
+    const upcoming_events = allEvents.filter((event) => !isPast(event));
+
+    return [past_events, upcoming_events];
   } catch (error) {
     return error;
   }
@@ -38,7 +46,7 @@ const createEvent = async (group_id, event) => {
         event.start_time,
         event.end_time,
         event.number_of_attendees,
-        group_id
+        group_id,
       ]
     );
     return newEvent;
